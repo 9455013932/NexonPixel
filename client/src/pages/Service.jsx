@@ -38,7 +38,7 @@ const Service = () => {
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">Our Services</h2>
         <p className="text-lg text-gray-600">
-          At USKY, we take pride in delivering high-quality cocoa beans, vanilla beans, and sawn timber while ensuring seamless business solutions tailored to your needs.
+          At USKY, we take pride in delivering high-quality  vanilla beans, and sawn timber while ensuring seamless business solutions tailored to your needs.
         </p>
 
         <div className="px-10 lg:px-20"> {/* Adds extra space on left & right */}
