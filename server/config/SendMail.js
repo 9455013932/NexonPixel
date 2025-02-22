@@ -11,7 +11,7 @@ export async function sendMail(subject, toEmail, html) {
     });
 
     var mailOptions = {
-        from: '"Nexonpixel" <support@expertsofdeals.com>',
+        from: '"Nexonpixel" <kumarsinghdeepak659@gmail.com>',
         to: toEmail,
         subject: subject,
         html: html,
@@ -19,6 +19,7 @@ export async function sendMail(subject, toEmail, html) {
 
     try {
         await transporter.sendMail(mailOptions);
+        console.log(transporter,mailOptions)
         return { status: true };
     } catch (error) {
         return { status: false, message: error.message };

@@ -1,17 +1,19 @@
+import { Link } from "react-router-dom";
 import product1 from "../assets/product1.png"
 
 const products = [
-  { img: product1, name: "Vanilla Beans", role: "Premium Quality" },
-  { img: "images/p2 cocoa beans.png", name: "Cocoa Beans", role: "Organic & Pure" },
-  { img: "images/p3 balsa wood.png", name: "Balsa Wood", role: "Lightweight & Durable" },
-  { img: "images/p4 teak wood.png", name: "Teak Wood", role: "High-Quality Timber" },
-  { img: "images/kiwlla wood (1).png", name: "Kwila Wood", role: "Hardwood Excellence" },
+  { img: product1, name: "VR Business Card", role: "Premium Digital Identity" },  
+  { img: product1, name: "Website Development", role: "Custom & Scalable Solutions" },  
+  { img: product1, name: "Digital Marketing", role: "Boost Your Online Presence" },  
+  { img: product1, name: "SEO Optimization", role: "Rank Higher, Grow Faster" },  
+  { img: product1, name: "Branding Solutions", role: "Create a Lasting Impact" },  
+  
 ];
 
 const Product = () => {
   return (
-    <section className="bg-[#091D3E] py-12">
-      <div className="container mx-auto px-4">
+    <section className="bg-[#091D3E] p-8 ">
+      <div className="container mx-auto px-4 ">
         <div className="text-center text-white mb-8">
           <h2 className="text-3xl font-bold">Our Products</h2>
           <hr className="w-24 mx-auto border-t-2 border-white mt-2" />
@@ -22,7 +24,7 @@ const Product = () => {
               <div className="w-full">
                 <img src={product.img} alt={product.name} className="w-full" />
               </div>
-              <div className="text-center text-white py-4">
+              <div className="text-center text-[#091D3E] py-4">
                 <h5 className="text-lg font-semibold">{product.name}</h5>
                 <h6 className="text-sm">{product.role}</h6>
               </div>
@@ -30,9 +32,9 @@ const Product = () => {
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <a href="#" className="px-8 py-2 bg-[#0C51CD] text-white rounded-md transition-all border border-[#0C51CD] hover:bg-transparent hover:text-[#0C51CD]">
+          <Link to={"/products"} className="px-8 py-2 bg-[#0C51CD] text-white rounded-md transition-all border border-[#0C51CD] hover:bg-transparent hover:text-[#0C51CD]">
             View More
-          </a>
+          </Link>
         </div>
       </div>
     </section>

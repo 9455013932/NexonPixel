@@ -1,23 +1,34 @@
-import { Navigate } from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext.jsx";
+import { Navigate, Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-const PrivateRoute = ({ children, requiredRole }) => {
-  const { isAuthenticated, user } = useContext(AuthContext);
+const PrivateRoute = ({ requiredRole }) => {
+  const dispatch = useDispatch()
+  const { user, status } = useSelector((state) => state.auth);
+  // console.log("User from Redux:", user);
 
-  if (isAuthenticated === null) {
-    return <div>Loading...</div>; 
+  useEffect(() => {
+    if (!user && status === "idle") {
+      dispatch(fetchUser()); // Fetch user data if not available
+    }
+  }, [user, status, dispatch]);
+
+  if (status === "loading") {
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+  }
+  if (!user) {
+    return <Navigate to="/login" replace />;
   }
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />; 
+  // Allow access if:
+  // 1. The route does not require a specific role (i.e., it’s public)
+  // 2. The user's role matches the required role
+  // 3. The user is an admin (admins can access user routes)
+  if (requiredRole && user.role !== requiredRole && user.role !== "admin") {
+    return <Navigate to="/unauthorized" replace />;
   }
 
-  if (user?.role !== requiredRole) {
-    return <Navigate to="/unauthorized" />; 
-  }
-
-  return children; 
+  return <Outlet />;
 };
 
 export default PrivateRoute;

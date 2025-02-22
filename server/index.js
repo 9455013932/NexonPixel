@@ -20,12 +20,12 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization','Cookie'],  // Allowed headers
   credentials: true,
 }));
-
+app.use(express.urlencoded({ extended: true }));
 // Connect to the database
 connectDB();
 
 // Set up routes
-app.use("/auth/users", userRoutes);
+app.use("/auth", userRoutes);
 app.use("/product", productrRoutes);
 
 

@@ -4,9 +4,9 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import t1 from "../assets/t1.jpg"
-import t2 from "../assets/t2.jpg"
-import t3 from "../assets/t3.jpg"
+import t1 from "../assets/t1.jpg";
+import t2 from "../assets/t2.jpg";
+import t3 from "../assets/t3.jpg";
 
 const testimonials = [
   {
@@ -41,25 +41,28 @@ const testimonials = [
   },
 ];
 
-
 const Testimonial = () => {
   return (
-    <section className="py-12 bg-gray-100">
-      <div className="container mx-auto text-center">
+    <section className="py-12  bg-gray-100">
+      <div className="container mx-auto text-center px-8">
         <h2 className="text-3xl font-bold">Testimonial</h2>
         <hr className="w-16 border-2 border-teal-500 mx-auto my-4" />
 
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          slidesPerView={2}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           navigation={true}
           loop={true}
+          breakpoints={{
+            0: { slidesPerView: 1 }, // Small screens (phones)
+            640: { slidesPerView: 2 }, // Medium screens (tablets)
+            1024: { slidesPerView: 3 }, // Large screens (desktops)
+          }}
           className="mt-10 mb-15"
         >
           {testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index} className="flex justify-center">
+            <SwiperSlide key={index} className="flex justify-center p-2">
               <div className="bg-white shadow-lg rounded-lg p-6 text-center max-w-lg">
                 <div className="flex justify-center">
                   <img
